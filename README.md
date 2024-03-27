@@ -12,13 +12,13 @@ Welcome to gRPC Petshop, a hands-on project to learn the basics of gRPC (Google 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/raissonsouto/grpc-petshop.git
+    git clone https://github.com/raissonsouto/gRPC-Petshop.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd petshop-simulator
+    cd gRPC-Petshop
     ```
 
 3. Install dependencies:
@@ -36,3 +36,11 @@ go run main.go
 ```
 
 The server should start listening on the specified port (default is `localhost:9191`).
+
+## Running the Client
+
+An example client can be found at `./client/main.go`. To run it, you just need to execute:
+
+```bash
+go run client/main.go
+```
