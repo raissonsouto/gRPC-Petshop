@@ -1,0 +1,53 @@
+syntax = "proto3";
+package dog;
+
+import "proto/person/person.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "petshop/proto/dog";
+
+message Dog {
+  int32 id = 1;
+  string name = 2;
+  int32 age = 3;
+  repeated string toys = 5;
+  person.Person owner = 6;
+  Breed breed = 7;
+}
+
+enum Breed {
+  UNKNOWN_BREED = 0;
+  LABRADOR = 1;
+  GERMAN_SHEPHERD = 2;
+  GOLDEN_RETRIEVER = 3;
+  BULLDOG = 4;
+  BEAGLE = 5;
+  POODLE = 6;
+  BOXER = 7;
+}
+
+service DogService {
+  rpc GetDog(GetDogRequest) returns (GetDogResponse);
+  rpc ListDogs(google.protobuf.Empty) returns (ListDogsResponse);
+  rpc CreateDog(CreateDogRequest) returns (CreateDogResponse);
+}
+
+message GetDogRequest {
+  int32 id = 1;
+}
+
+message GetDogResponse {
+  Dog dog = 1;
+}
+
+message ListDogsResponse {
+  repeated Dog dog = 1;
+}
+
+message CreateDogRequest {
+  Dog dog = 1;
+}
+
+message CreateDogResponse {
+  int32 id = 1;
+}

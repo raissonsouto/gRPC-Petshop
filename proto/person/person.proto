@@ -1,0 +1,40 @@
+syntax = "proto3";
+package person;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "petshop/proto/person";
+
+message Person {
+  int32 id = 1;
+  string name = 2;
+  google.protobuf.Timestamp birth_date = 3;
+  string address = 4;
+}
+
+service PersonService {
+  rpc GetPerson(GetPersonRequest) returns (GetPersonResponse);
+  rpc ListPersons(google.protobuf.Empty) returns (ListPersonsResponse);
+  rpc CreatePerson(CreatePersonRequest) returns (CreatePersonResponse);
+}
+
+message GetPersonRequest {
+  int32 id = 1;
+}
+
+message GetPersonResponse {
+  Person person = 1;
+}
+
+message ListPersonsResponse {
+  repeated Person person = 1;
+}
+
+message CreatePersonRequest {
+  Person person = 1;
+}
+
+message CreatePersonResponse {
+  int32 id = 1;
+}
